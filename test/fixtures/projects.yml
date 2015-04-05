@@ -1,0 +1,49 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  reference: 1
+  acronym: MyString
+  programme_pga: MyString
+  programme_code: MyString
+  subprogramme: MyString
+  start_date: 2015-04-04
+  end_date: 2015-04-04
+  project_url: MyString
+  total_cost: 1
+  ec_max_contribution: 1
+  call: MyString
+  funding_scheme: MyString
+  organisation_id: 1
+  coordinator_country: MyString
+  participant_countries: MyString
+  countries: MyString
+  subjects: MyString
+  num_countries: 1
+  num_participants: 1
+  num_uniquepart: 1
+  share: 1
+
+two:
+  id: 1
+  reference: 1
+  acronym: MyString
+  programme_pga: MyString
+  programme_code: MyString
+  subprogramme: MyString
+  start_date: 2015-04-04
+  end_date: 2015-04-04
+  project_url: MyString
+  total_cost: 1
+  ec_max_contribution: 1
+  call: MyString
+  funding_scheme: MyString
+  organisation_id: 1
+  coordinator_country: MyString
+  participant_countries: MyString
+  countries: MyString
+  subjects: MyString
+  num_countries: 1
+  num_participants: 1
+  num_uniquepart: 1
+  share: 1

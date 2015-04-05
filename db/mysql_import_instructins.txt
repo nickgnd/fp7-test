@@ -1,0 +1,30 @@
+LOAD DATA LOCAL INFILE '/Users/Nico/Documents/SOD15/FP7/20150404_organizations.csv'
+INTO TABLE organizations
+FIELDS TERMINATED BY ';'
+    OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES;
+
+
+// Prima di importare i progetti bisogna cambiare il formato della data.
+LOAD DATA LOCAL INFILE '/Users/Nico/Documents/SOD15/FP7/20150404_projects.csv'
+INTO TABLE projects
+FIELDS TERMINATED BY ';'
+    OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE '/Users/Nico/Documents/SOD15/FP7/20150404_organization_project.csv'
+INTO TABLE organization_projects
+FIELDS TERMINATED BY ';'
+    OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES;
+
+LOAD DATA LOCAL INFILE '/Users/Nico/Documents/SOD15/FP7/edges/unique_edges.csv'
+INTO TABLE organization_connections
+FIELDS TERMINATED BY ';'
+    OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(organization_a_id, organization_b_id, num_projects, sum_shares);
