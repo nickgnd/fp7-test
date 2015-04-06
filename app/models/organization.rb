@@ -27,6 +27,35 @@ class Organization < ActiveRecord::Base
   has_many :organizations_B, through: :organization_B_connections, source: :organization_b
 
 
+
+  #Methond to create a graph for Sigma.js
+  def self.create_graph()
+
+    #Example of a graph
+    # @graph = {"nodes":[ {"id": "chr1","label": "Bob","size": 8.75 },
+    #           {"id": "chr10", "label": "Alice", "size": 14.75 }],
+    #           "edges":[ {"id": "1","source": "chr1","target": "chr10"} ]}
+
+    nodes = []
+    nodes.push(Organization.first)
+    nodes += Organization.first.organizations_A
+    nodes += Organization.first.organizations_B
+    nodes_hash = nodes.map {|n| {id: n.id.to_s, label: n.organization_name, size: n.num_projects.to_i }}
+
+    edges = []
+    OrganizationConnection.where("organization_a_id = ? OR organization_b_id = ?", 1, 1).find_each do |org|
+      edges.push([org.id, org.organization_a_id, org.organization_b_id])
+    end
+    edges_hash = edges.map {|e| {id: e[0].to_s, source: e[1].to_s, target: e[2].to_s }}
+
+    graph = {}
+    graph["nodes"] = nodes_hash
+    graph["edges"] = edges_hash
+
+    return graph
+
+  end
+
 end
 
 

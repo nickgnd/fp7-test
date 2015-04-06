@@ -11,14 +11,12 @@ class OrganizationsController < ApplicationController
   end
 
   def graph
-    # I create a JSON of the network
-    @graph = {"nodes":[ {"id": "chr1","label": "Bob","size": 8.75 },
-              {"id": "chr10", "label": "Alice", "size": 14.75 }],
-              "edges":[ {"id": "1","source": "chr1","target": "chr10"} ]}
+
+    @graph = Organization.create_graph
 
     respond_to do |format|
       format.html # graph.html.erb
-      format.json { render json: @graph }
+      format.json { render json: @graph }     # I create a JSON of the graph for Sigma.js
     end
   end
 
