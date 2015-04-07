@@ -63,7 +63,27 @@ class Organization < ActiveRecord::Base
   end
 
 
+  # Methond to create a graph for Sigma.js based on array of id
+  def self.create_graph_from_nodes(array_of_nodes_id)
+    nodes = []
+    nodes = Organization.select('id','organization_name','num_projects').where(id: array_of_nodes_id)
+
+    edges = []
+    if !(nodes.empty?)
+      edges = OrganizationConnection.get_all_connections_between_organizations(array_of_nodes_id)
+    end
+
+    graph = {}
+    graph["nodes"] = nodes
+    graph["edges"] = edges
+
+    return graph
+  end
+
+
+  # -------------------------------------------------------
   # ALERT: browser crashes -> Too many nodes and edges (?)
+  # -------------------------------------------------------
   def self.whole_graph()
     nodes = []
     nodes = Organization.select('id','organization_name','num_projects')

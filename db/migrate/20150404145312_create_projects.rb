@@ -13,7 +13,7 @@ class CreateProjects < ActiveRecord::Migration
       t.integer :ec_max_contribution
       t.string :call
       t.string :funding_scheme
-      t.integer :organisation_id
+      t.integer :organization_id
       t.string :coordinator_country
       t.string :participant_countries
       t.string :countries

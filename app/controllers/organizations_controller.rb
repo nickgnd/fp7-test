@@ -11,8 +11,9 @@ class OrganizationsController < ApplicationController
   end
 
   def graph
-
-    @graph = Organization.create_graph
+    # if params[:nodes]
+    nodes = [1,2,3,4,5]
+      @graph = Organization.create_graph_from_nodes(nodes)
 
     respond_to do |format|
       format.html # graph.html.erb
