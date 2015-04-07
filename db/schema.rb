@@ -11,23 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150405093614) do
+ActiveRecord::Schema.define(version: 20150407094858) do
 
   create_table "organization_connections", force: :cascade do |t|
-    t.integer  "organization_a_id", limit: 4, null: false
-    t.integer  "organization_b_id", limit: 4, null: false
-    t.integer  "num_projects",      limit: 4
-    t.integer  "sum_shares",        limit: 4
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "source",       limit: 4, null: false
+    t.integer  "target",       limit: 4, null: false
+    t.integer  "num_projects", limit: 4
+    t.integer  "sum_shares",   limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  add_index "organization_connections", ["organization_a_id"], name: "index_organization_connections_on_organization_a_id", using: :btree
-  add_index "organization_connections", ["organization_b_id"], name: "index_organization_connections_on_organization_b_id", using: :btree
+  add_index "organization_connections", ["source"], name: "index_organization_connections_on_source", using: :btree
+  add_index "organization_connections", ["target"], name: "index_organization_connections_on_target", using: :btree
 
   create_table "organizations", force: :cascade do |t|
-    t.string   "organisation_name",       limit: 255
-    t.string   "organisation_short_name", limit: 255
+    t.string   "organization_name",       limit: 255
+    t.string   "organization_short_name", limit: 255
     t.string   "organization_url",        limit: 255
     t.string   "country",                 limit: 255
     t.string   "street",                  limit: 255
