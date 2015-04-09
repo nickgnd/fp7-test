@@ -1,2 +1,39 @@
-<h1>Organizations#index</h1>
-<p>Find me in app/views/organizations/index.html.erb</p>
+<!-- Organizations#index -->
+<div class="row">
+  <div class="small-11 small-centered columns">
+  <h1>Organizations</h1>
+
+  <br>
+
+  <table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Short name</th>
+    <th>Url</th>
+    <th>Country</th>
+    <th>N° Prog.</th>
+    <th>N° Proj.</th>
+    <th>Sum shares</th>
+  </tr>
+  <% @organizations.each do |org| %>
+  <tr>
+    <td><%= org.id %></td>
+    <td><%= org.organization_name %></td>
+    <td><%= org.organization_short_name %></td>
+    <td><%= org.organization_url %></td>
+    <td><%= org.country %></td>
+    <td class="text-center"><%= org.num_programmes %></td>
+    <td class="text-center"><%= org.num_projects %></td>
+    <td class="text-right"><%= org.sum_shares %></td>
+  </tr>
+  <% end %>
+  <!-- ... -->
+  </table>
+
+
+  </div>
+</div>
+
+
+
