@@ -38,6 +38,8 @@ class Organization < ActiveRecord::Base
   has_many :organizations_B, through: :organization_B_connections, source: :organization_b
 
 
+  # Pagination -> number of records per page
+  paginates_per 50
 
   # Methond to create a graph for Sigma.js
   def self.create_graph()

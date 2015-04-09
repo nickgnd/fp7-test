@@ -120,10 +120,12 @@ $oil         : #333333;
 $jet         : #222222;
 $black       : #000000;
 
+// for tables
+$darker-aliceblue: #B4DCFF;
 $aliceblue   : #F0F8FF;
 
 // We use these as default colors throughout
-$primary-color: #008CBA;
+$primary-color: #2871b4; // #008CBA
 $secondary-color: #e7e7e7;
 $alert-color: #f04124;
 $success-color: #43AC6A;
@@ -937,35 +939,35 @@ $definition-list-margin-bottom: rem-calc(12);
 // 20. Pagination
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// $include-pagination-classes: $include-html-classes;
+$include-pagination-classes: $include-html-classes;
 
 // We use these to control the pagination container
-// $pagination-height: rem-calc(24);
-// $pagination-margin: rem-calc(-5);
+$pagination-height: rem-calc(24);
+$pagination-margin: rem-calc(-5);
 
 // We use these to set the list-item properties
-// $pagination-li-float: $default-float;
-// $pagination-li-height: rem-calc(24);
-// $pagination-li-font-color: $jet;
-// $pagination-li-font-size: rem-calc(14);
-// $pagination-li-margin: rem-calc(5);
+$pagination-li-float: $default-float;
+$pagination-li-height: rem-calc(24);
+$pagination-li-font-color: $jet;
+$pagination-li-font-size: rem-calc(14);
+$pagination-li-margin: rem-calc(5);
 
 // We use these for the pagination anchor links
-// $pagination-link-pad: rem-calc(1 10 1);
-// $pagination-link-font-color: $aluminum;
-// $pagination-link-active-bg: scale-color($white, $lightness: -10%);
+$pagination-link-pad: rem-calc(1 10 1);
+$pagination-link-font-color: $aluminum;
+$pagination-link-active-bg: scale-color($white, $lightness: -10%);
 
 // We use these for disabled anchor links
-// $pagination-link-unavailable-cursor: default;
-// $pagination-link-unavailable-font-color: $aluminum;
-// $pagination-link-unavailable-bg-active: transparent;
+$pagination-link-unavailable-cursor: default;
+$pagination-link-unavailable-font-color: $aluminum;
+$pagination-link-unavailable-bg-active: transparent;
 
 // We use these for currently selected anchor links
-// $pagination-link-current-background: $primary-color;
-// $pagination-link-current-font-color: $white;
-// $pagination-link-current-font-weight: $font-weight-bold;
-// $pagination-link-current-cursor: default;
-// $pagination-link-current-active-bg: $primary-color;
+$pagination-link-current-background: $primary-color;
+$pagination-link-current-font-color: $white;
+$pagination-link-current-font-weight: $font-weight-bold;
+$pagination-link-current-cursor: default;
+$pagination-link-current-active-bg: $primary-color;
 
 // 21. Panels
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -1386,7 +1388,7 @@ $table-margin-bottom: rem-calc(20);
 $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-$topbar-bg-color: #2871b4;
+$topbar-bg-color: $primary-color;
 $topbar-bg: $topbar-bg-color;
 
 // Height and margin
