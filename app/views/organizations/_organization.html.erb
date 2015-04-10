@@ -2,13 +2,12 @@
 
     <tr>
         <td><%= org.id %></td>
-        <td><%= org.organization_name %></td>
-        <td><%= org.organization_short_name %></td>
-        <td><%= org.organization_url %></td>
+        <td><%= link_to org.organization_name, organization_path(org) %></td>
+        <td><%= (org.organization_short_name.to_s.empty?)? "-" : org.organization_short_name %></td>
+        <td><%= (org.organization_url.to_s.empty?)? "-" : link_to(org.organization_url, org.organization_url) %></td>
         <td><%= org.country %></td>
         <td class="text-center"><%= org.num_programmes %></td>
         <td class="text-center"><%= org.num_projects %></td>
-        <td class="text-right"><%= org.sum_shares %></td>
     </tr>
 
 <% end %>

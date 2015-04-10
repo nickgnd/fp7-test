@@ -231,11 +231,11 @@ $h5-font-reduction: 0;
 $h6-font-reduction: 0;
 
 // These control how subheaders are styled.
-// $subheader-line-height: 1.4;
-// $subheader-font-color: scale-color($header-font-color, $lightness: 35%);
-// $subheader-font-weight: $font-weight-normal;
-// $subheader-top-margin: .2rem;
-// $subheader-bottom-margin: .5rem;
+$subheader-line-height: 1.4;
+$subheader-font-color: scale-color($header-font-color, $lightness: 35%);
+$subheader-font-weight: $font-weight-normal;
+$subheader-top-margin: .2rem;
+$subheader-bottom-margin: .5rem;
 
 // A general <small> styling
 $small-font-size: 60%;
@@ -1461,9 +1461,9 @@ $topbar-divider-border-bottom: solid 2px scale-color($topbar-bg-color, $lightnes
 $topbar-divider-border-top: solid 2px scale-color($topbar-bg-color, $lightness: -50%);
 
 // Sticky Class
-$topbar-sticky-class: ".sticky";
-$topbar-arrows: true; //Set false to remove the triangle icon from the menu item
-$topbar-dropdown-arrows: true; //Set false to remove the \00bb >> text from dropdown subnavigation li//
+// $topbar-sticky-class: ".sticky";
+// $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
+// $topbar-dropdown-arrows: true; //Set false to remove the \00bb >> text from dropdown subnavigation li//
 
 // 36. Visibility Classes
 // - - - - - - - - - - - - - - - - - - - - - - - - -

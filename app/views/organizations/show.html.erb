@@ -1,2 +1,44 @@
-<h1>Organizations#show</h1>
-<p>Find me in app/views/organizations/show.html.erb</p>
+<!-- Organizations#show -->
+<div class="row">
+  <div class="small-11 small-centered columns">
+  <br>
+  <div class="row">
+    <div class="large-2 columns">
+      <table>
+        <tr>
+          <th>ID</th>
+          <td class="id-value" > <%= @organization.id %></td>
+        </tr>
+        <tr>
+          <th>Country</th>
+          <td><%= @organization.country %></td>
+        </tr>
+        <tr>
+          <th>N° Prog.</th>
+          <td><%= @organization.num_programmes %></td>
+        </tr>
+        <tr>
+          <th>N° Proj.</th>
+          <td><%= @organization.num_projects %></td>
+        </tr>
+      <!-- ... -->
+      </table>
+    </div>
+    <div class="large-10 columns">
+        <h4><%= @organization.organization_name %></h4>
+        <h5 class="subheader">Short name: <%= (@organization.organization_short_name.to_s.empty?)? "-" : @organization.organization_short_name %></h5>
+        <h5 class="subheader">Url: <%= (@organization.organization_url.to_s.empty?)? "-" : link_to(@organization.organization_url, @organization.organization_url) %></h5>
+    </div>
+  </div>
+
+  <br>
+
+
+
+  <div class="small-12 columns">
+    <%= render partial: "graph" %>
+  </div>
+
+
+  </div>
+</div>

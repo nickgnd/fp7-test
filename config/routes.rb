@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   get 'homepage/index'
 
-  get 'organizations/index'
+  get 'organizations', to: 'organizations#index'
 
-  get 'organizations/show'
+  get 'organizations/:id', to: 'organizations#show', as: "organization"
 
   get 'organizations/graph'
 
