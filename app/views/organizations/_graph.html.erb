@@ -1,57 +1,132 @@
 <div id="graph-container"></div>
 
 <script>
-    // these are just some preliminary settings
-    var g = {
-        nodes: [],
-        edges: []
-    };
 
-   // Create new Sigma instance in graph-container div (use your div name here)
-   s = new sigma({
-   graph: g,
-   container: 'graph-container',
-   renderer: {
-    container: document.getElementById('graph-container'),
-    type: 'canvas'
-   },
-   settings: {
-    minNodeSize: 8,
-    maxNodeSize: 20
-   }
-   });
+  // Hash to store original color of the graph
+  var colorNodes = {},
+      colorEdges = {};
 
-   // first you load a json with (important!) s parameter to refer to the sigma instance
+  // The id of the organization node
+  var original_node = $('.id-value')[0].firstChild.nodeValue.toString(); // The id of the organization node
 
-   sigma.parsers.json(
-        // '../FP7_whole_graph.json', // The complete graph -> Browser crashes!
-        $('.id-value')[0].firstChild.nodeValue.toString() + ".json",
-        s,
-        function() {
-            // this below adds x, y attributes as well as size = degree of the node
-            var i,
-              nodes = s.graph.nodes(),
-              len = nodes.length;
 
-            for (i = 0; i < len; i++) {
-                nodes[i].x = Math.random();
-                nodes[i].y = Math.random();
+  // I check if Sigma instance already exists. if not -> i create new Sigma instance
+  if (typeof s === 'undefined') {
 
-                nodes[i].label = nodes[i].organization_name;
+    // Add a new method to the graph model that returns an object with every neighbors of a node inside:
+    sigma.classes.graph.addMethod('neighbors', function(nodeId) {
+      var k,
+          neighbors = {},
+          index = this.allNeighborsIndex[nodeId] || {};
 
-                nodes[i].size = s.graph.degree(nodes[i].id);
-                nodes[i].color = nodes[i].center ? '#333' : '#666';
-            }
+      for (k in index)
+        neighbors[k] = this.nodesIndex[k];
 
-            // Refresh the display:
-            s.refresh();
+      return neighbors;
+    });
 
-            // Da mettere un bottone
-            // ForceAtlas Layout
-            // s.startForceAtlas2();
-            // ! IMPORTANT ! Stop force atlas
+    s = new sigma();
+
+  }
+
+
+  // Load a json with s parameter to refer to the sigma instance
+  sigma.parsers.json(
+    original_node + ".json", // json url
+    s,
+    function() {
+
+      s.settings({
+        minNodeSize: 5,
+        maxNodeSize: 25
+      });
+
+      s.addRenderer({
+        type: 'canvas',
+        container: 'graph-container'
+      });
+
+
+      // this below adds (x,y) attributes as well as size = degree of the node --> TO CHANGE (Weigth)
+      var i,
+        nodes = s.graph.nodes(),
+        len = nodes.length;
+
+      for (i = 0; i < len; i++) {
+          nodes[i].x = Math.random();
+          nodes[i].y = Math.random();
+
+          nodes[i].label = nodes[i].organization_name;
+
+          nodes[i].size = s.graph.degree(nodes[i].id);
+          nodes[i].color = "#a9c6e1";
         }
-   );
+
+      // Set color for the orginal node
+      s.graph.nodes(parseInt(original_node)).color ='#2871b4'; // primary color for the original node
+
+      // Set the color for the edges
+      node_edges = s.graph.neighborhood(parseInt(original_node)).edges;
+      node_edges.forEach(function(e) {
+        if (e.source == parseInt(original_node) || e.target == parseInt(original_node))
+            e.color = "#2871b4"; // If linked with original node -> primary color
+        else
+            e.color = "#a9c6e1";
+      });
+
+      // Save the original colors of our nodes and edges
+      s.graph.nodes().forEach(function(n) {
+        colorNodes[n.id] = n.color;
+      });
+      s.graph.edges().forEach(function(e) {
+        colorEdges[e.id] = e.color;
+      });
+
+      s.refresh();
+      }
+    );
+
+  // When a node is clicked, we check for each node if it is a neighbor of the clicked one. If not,
+  // we set its color as grey, and else, it takes its original color.
+  // We do the same for the edges, and we only keep edges that have both extremities colored.
+  s.bind('clickNode', function(e) {
+    var nodeId = e.data.node.id,
+        toKeep = s.graph.neighbors(nodeId);
+
+    toKeep[nodeId] = e.data.node;
+
+    s.graph.nodes().forEach(function(n) {
+      if (toKeep[n.id])
+        n.color = colorNodes[n.id];
+      else
+        n.color = '#ccc';
+    });
+
+    s.graph.edges().forEach(function(e) {
+      if (toKeep[e.source] && toKeep[e.target])
+        e.color = colorEdges[e.id];
+      else
+        e.color = 'grey';
+    });
+
+    // When the stage is clicked, we just color each
+    // node and edge with its original color.
+    s.bind('clickStage', function(e) {
+      s.graph.nodes().forEach(function(n) {
+        n.color = colorNodes[n.id];
+        });
+
+      s.graph.edges().forEach(function(e) {
+        e.color = colorEdges[e.id];
+        });
+
+      });
+
+    // Same as in the previous event:
+    s.refresh();
+    }
+  );
+
 
 
 </script>

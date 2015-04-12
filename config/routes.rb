@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   get 'organizations', to: 'organizations#index'
 
-  get 'organizations/:id', to: 'organizations#show', as: "organization"
+  get 'organizations/show/:id', to: 'organizations#show', as: "organization_show" # as: "organization_show"
 
-  get 'organizations/graph'
+  # get 'organizations/graph', to: 'organizations#graph'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
