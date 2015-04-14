@@ -1,0 +1,36 @@
+<!-- Projects#index -->
+<div class="row">
+  <div class="small-11 small-centered columns">
+  <br>
+
+  <h2>Projects</h2>
+
+  <br>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Reference</th>
+        <th>Prog. PGA</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Coor. country</th>
+        <th>Total cost</th>
+        <th>N° countries</th>
+        <th>N° participants</th>
+      </tr>
+    <thead>
+    <tbody id="projects">
+      <%= render partial: "project" %>
+    </tbody>
+  <!-- ... -->
+  </table>
+
+  <%= paginate @projects, remote: true %>
+
+  <br>
+
+
+  </div>
+</div>

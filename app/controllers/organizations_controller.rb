@@ -15,7 +15,7 @@ class OrganizationsController < ApplicationController
       @graph = Organization.create_graph_of_single_node(@organization.id)
 
       respond_to do |format|
-        format.html # graph.html.erb
+        format.html
         format.json { render json: @graph }     # Graph of the single node (include edges between nodes linked at original node)
       end
     end

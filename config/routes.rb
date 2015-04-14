@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
+
   get 'homepage/index'
 
   get 'organizations', to: 'organizations#index'
 
-  get 'organizations/show/:id', to: 'organizations#show', as: "organization_show"
+  get 'organizations/show/:id', to: 'organizations#show', as: 'organization_show'
 
   # get 'organizations/graph', to: 'organizations#graph'
+
+  get 'projects', to: 'projects#index'
+
+  get 'projects/show/:id', to: 'projects#show', as: 'project_show'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
