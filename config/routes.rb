@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'organizations', to: 'organizations#index'
 
-  get 'organizations/show/:id', to: 'organizations#show', as: "organization_show" # as: "organization_show"
+  get 'organizations/show/:id', to: 'organizations#show', as: "organization_show"
 
   # get 'organizations/graph', to: 'organizations#graph'
 
