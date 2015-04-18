@@ -149,6 +149,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
+  debug_inspector (= 0.0.2)
   foundation-rails
   jbuilder (~> 2.0)
   jquery-rails

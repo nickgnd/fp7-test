@@ -8,6 +8,7 @@ development:
   socket: /tmp/mysql.sock
   timeout: 5000
 
+
 test:
   adapter: mysql2
   encoding: utf8
@@ -18,15 +19,12 @@ test:
   socket: /tmp/mysql.sock
   timeout: 5000
 
+
 production:
   adapter: mysql2
   encoding: utf8
-  database: fp7_production
-  pool: 5
-  username: root
-  password: password
-  socket: /tmp/mysql.sock
-  timeout: 5000
-
-
-
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>

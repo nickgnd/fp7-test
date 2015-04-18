@@ -22,9 +22,3 @@
 # Ignore secrets
 /config/secrets.yml
 /config/initializers/secret_token.rb
-
-
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml

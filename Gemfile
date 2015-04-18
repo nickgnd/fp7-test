@@ -25,6 +25,9 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 
+# To fix a weird problem with Passenger (Production ENV on AWS)
+gem 'debug_inspector', '0.0.2'
+
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
