@@ -15,7 +15,10 @@
   <body>
     <%= render "shared/topbar" %>
 
-    <%= yield %>
+    <div id="content">
+      <%= yield %>
+    </div>
 
+    <%= render "shared/footer" %>
   </body>
 </html>
