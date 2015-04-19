@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get 'organizations/show/:id', to: 'organizations#show', as: 'organization_show'
 
+  get 'organizations/show-only-organization-info/:id', to: 'organizations#show_only_organization_info', as: 'organization_show_info'
+
   # get 'organizations/graph', to: 'organizations#graph'
 
   get 'projects', to: 'projects#index'

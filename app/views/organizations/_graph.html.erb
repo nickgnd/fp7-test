@@ -1,4 +1,12 @@
+
 <div id="graph-container"></div>
+
+<div id="organizationModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <%= render partial: "organization_info" %>
+</div>
+
+
+
 
 <script>
 
@@ -38,7 +46,15 @@
 
       s.settings({
         minNodeSize: 5,
-        maxNodeSize: 25
+        maxNodeSize: 25,
+        doubleClickEnabled: false,
+        minEdgeSize: 0.5,
+        maxEdgeSize: 4,
+        // enableEdgeHovering: true,
+        // edgeHoverColor: 'edge',
+        // defaultEdgeHoverColor: '#000',
+        // edgeHoverSizeRatio: 1,
+        // edgeHoverExtremities: true
       });
 
       s.addRenderer({
@@ -128,6 +144,27 @@
   );
 
 
+  s.bind('doubleClickNode', function(e) {
+    $.ajax({
+      method: 'get',
+      url: '/organizations/show/' + original_node,
+      data: {organization_extra_id: e.data.node.id},
+      dataType: 'script'
+    })
+    .done(function( data ) {
+      // Open modal window with Foundation
+      $("#organizationModal").foundation('reveal','open');
+    });
+  });
+
+  // s.bind('doubleClickNode', function(e) {
+  //   $('#organizationModal').foundation('reveal', 'open', {
+  //       method: 'get',
+  //       url: '/organizations/show/' + original_node,
+  //       data: {organization_extra_id: e.data.node.id},
+  //       dataType: 'script'
+  //   });
+  // });
 
 </script>
 

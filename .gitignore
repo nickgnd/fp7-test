@@ -22,3 +22,6 @@
 # Ignore secrets
 /config/secrets.yml
 /config/initializers/secret_token.rb
+
+# Ignore project status
+project_status.txt

@@ -12,13 +12,24 @@ class OrganizationsController < ApplicationController
   def show
     if params[:id]
       @organization = Organization.find(params[:id])
-      @graph = Organization.create_graph_of_single_node(@organization.id)
 
-      respond_to do |format|
-        format.html
+      if params[:organization_extra_id]
+        @organization_extra = Organization.find(params[:organization_extra_id])
+      else
+        @graph = Organization.create_graph_of_single_node(@organization.id)
+      end
+
+    end
+
+    respond_to do |format|
+      format.html
+      if params[:organization_extra_id]
+        format.js
+        format.json {render json: @organization_extra }
+      else
         format.json { render json: @graph }     # Graph of the single node (include edges between nodes linked at original node)
       end
-    end
+      end
   end
 
 
