@@ -1,0 +1,13 @@
+<% @organizations.each do |org| %>
+
+    <tr>
+        <td><%= org.id %></td>
+        <td><%= link_to org.organization_name, organization_show_path(org) %></td>
+        <td><%= (org.organization_short_name.to_s.empty?)? "-" : org.organization_short_name %></td>
+        <td><%= (org.organization_url.to_s.empty?)? "-" : link_to(org.organization_url, org.organization_url) %></td>
+        <td><%= org.country %></td>
+        <td class="text-center"><%= org.num_programmes %></td>
+        <td class="text-center"><%= org.num_projects %></td>
+    </tr>
+
+<% end %>

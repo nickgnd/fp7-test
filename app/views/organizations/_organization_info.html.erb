@@ -1,0 +1,50 @@
+<% if @organization_extra %>
+<div class="row">
+  <div class="large-4 columns">
+    <h5 id="modalTitle"><%= (@organization_extra.organization_name)? (link_to @organization_extra.organization_name, organization_show_path(@organization_extra)) : "-" %></h5><h6 class="subheader"> (ID: <%= @organization_extra.id %>)</h6>
+    <h6 class="subheader">Short name: <%= (@organization_extra.organization_short_name.to_s.empty?)? "-" : @organization_extra.organization_short_name %></h6>
+    <h6 class="subheader">Url: <%= (@organization_extra.organization_url.to_s.empty?)? "-" : link_to(@organization_extra.organization_url, @organization_extra.organization_url) %></h6>
+  <ul class="vcard">
+    <li class="fn"><em>Address</em></li>
+    <li class="street-address"><%= (@organization_extra.street.to_s.empty?)? "-" : @organization_extra.street.capitalize %></li>
+    <li class="locality"><%= (@organization_extra.city.to_s.empty?)? "-" : @organization_extra.city.capitalize %></li>
+    <li><span class="state"><%= (@organization_extra.country.to_s.empty?)? "-" : @organization_extra.country %></span>, <span class="zip"><%= @organization_extra.post_code %></span></li>
+  </ul>
+  </div>
+  <div class="large-6 columns">
+    <h6>Number of projects: <%= (@organization_extra.num_projects.to_s.empty?)? "-" : @organization_extra.num_projects %></h6>
+    <h6>Number of programmes: <%= (@organization_extra.num_programmes.to_s.empty?)? "-" : @organization_extra.num_programmes %></h6>
+    <table>
+        <thead>
+          <tr>
+            <th>Programme</th>
+            <th>N°</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% programmes_hash = Hash.new(0) %>
+          <% @organization_extra.programmes.gsub(" ","").split(",").each { |p| %>
+          <%   programmes_hash[p] += 1 %>
+          <% } %>
+          <% programmes_hash.each { |p,n| %>
+          <tr>
+            <td><%= p %></td>
+            <td><%= n %></td>
+          </tr>
+          <% } %>
+        </tbody>
+    </table>
+  </div>
+</div>
+
+<% else %>
+<div class="panel">
+  <h5>Ops...</h5>
+  <p>Something going wrong</p>
+</div>
+
+<% end %>
+
+
+
+<a class="close-reveal-modal" aria-label="Close">&#215;</a>

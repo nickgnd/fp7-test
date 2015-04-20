@@ -1,0 +1,8 @@
+@import 'foundation_and_overrides';
+
+.footer-wrapper {
+  background:$topbar-bg;
+  width: 100%;
+  height: rem-calc(50);
+  bottom: 0px;
+}
