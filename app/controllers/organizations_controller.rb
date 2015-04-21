@@ -22,11 +22,11 @@ class OrganizationsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html
       if params[:organization_extra_id]
         format.js
         format.json {render json: @organization_extra }
       else
+        format.html
         format.json { render json: @graph }     # Graph of the single node (include edges between nodes linked at original node)
       end
       end
