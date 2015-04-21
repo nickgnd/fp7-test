@@ -143,8 +143,12 @@
     }
   );
 
-
-  s.bind('doubleClickNode', function(e) {
+  // ! DoubleClickNode fires also single clickNode
+  // and with large file it could increase response time
+  // see https://github.com/jacomyal/sigma.js/issues/506
+  // Use rightClickNode to fix it!
+  // (next step use tooltips https://github.com/Linkurious/linkurious.js/tree/linkurious-version/plugins/sigma.plugins.tooltips)
+  s.bind('rightClickNode', function(e) {
     $.ajax({
       method: 'get',
       url: '/organizations/show/' + original_node,
@@ -157,14 +161,7 @@
     });
   });
 
-  // s.bind('doubleClickNode', function(e) {
-  //   $('#organizationModal').foundation('reveal', 'open', {
-  //       method: 'get',
-  //       url: '/organizations/show/' + original_node,
-  //       data: {organization_extra_id: e.data.node.id},
-  //       dataType: 'script'
-  //   });
-  // });
+
 
 </script>
 
