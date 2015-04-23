@@ -2,7 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-@import 'foundation_and_overrides';
+@import "foundation_and_overrides";
+@import "colors";
 
 #graph-container {
     height: 500px;
@@ -15,4 +16,42 @@
 
 .vcard {
   width: rem-calc(300);
+}
+
+// Table
+#organizations_table > tr:hover, #organizations_table > tr:nth-of-type(even):hover {
+   background: $very-light-orange;
+  -o-transition: all 0.1s ease-in-out;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -ms-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+th .asc:after {
+  width: 0;
+  height: 0;
+  content: "";
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid $soft-black;
+  position: absolute;
+  margin-top: 7px;
+  margin-left: 5px;
+}
+
+th .desc:after {
+  width: 0;
+  height: 0;
+  content: "";
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid $soft-black;
+  position: absolute;
+  margin-top: 7px;
+  margin-left: 5px;
+}
+
+th .current {
+  margin-right:rem-calc(10);
 }

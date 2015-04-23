@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 
-
 # Use mysql2 as the database for Active Record
 gem 'mysql2'
 # Use foundation front-end framework
@@ -36,6 +35,9 @@ end
 
 # Pagination
 gem 'kaminari'
+
+# To handle tables
+gem 'jquery-datatables-rails', '~> 3.2.0'
 
 
 # Use ActiveModel has_secure_password

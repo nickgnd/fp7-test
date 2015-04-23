@@ -1,13 +1,19 @@
 class OrganizationsController < ApplicationController
 
+  helper_method :sort_column, :sort_direction
+
   def index
-    @organizations = Organization.limit(10).page(params[:page])
+    @model = "organization" # Set model
+    @default_sort = "id" # Set default sort
+    @organizations = Organization.search(params[:search], sort_column(@model, @default_sort), sort_direction)
+    @organizations = @organizations.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
       format.js
     end
   end
+
 
   def show
     if params[:id]
@@ -45,5 +51,19 @@ class OrganizationsController < ApplicationController
   #     format.json { render json: @graph }     # I create a JSON of the graph for Sigma.js
   #   end
   # end
+
+
+
+  private
+
+  def sort_column(model, default_sort)
+    if model == "organization"
+      Organization.column_names.include?(params[:sort]) ? params[:sort] : default_sort
+    end
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
+  end
 
 end

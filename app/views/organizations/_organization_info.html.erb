@@ -8,7 +8,7 @@
     <li class="fn"><em>Address</em></li>
     <li class="street-address"><%= (@organization_extra.street.to_s.empty?)? "-" : @organization_extra.street.capitalize %></li>
     <li class="locality"><%= (@organization_extra.city.to_s.empty?)? "-" : @organization_extra.city.capitalize %></li>
-    <li><span class="state"><%= (@organization_extra.country.to_s.empty?)? "-" : @organization_extra.country %></span>, <span class="zip"><%= @organization_extra.post_code %></span></li>
+    <li><span class="state"><%= (@organization_extra.country.to_s.empty?)? "-" : @organization_extra.country %></span> <span class="zip"><%= (@organization_extra.post_code.to_s.empty?)? "" : ", "+@organization_extra.post_code %></span></li>
   </ul>
   </div>
   <div class="large-6 columns">
