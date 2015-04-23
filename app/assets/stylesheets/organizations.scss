@@ -19,7 +19,7 @@
 }
 
 // Table
-tbody > tr:hover, tr:nth-of-type(even):hover {
+#organizations_table > tr:hover, #organizations_table > tr:nth-of-type(even):hover {
    background: $very-light-orange;
   -o-transition: all 0.1s ease-in-out;
   -webkit-transition: all 0.1s ease-in-out;
