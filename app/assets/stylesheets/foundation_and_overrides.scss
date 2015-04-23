@@ -60,6 +60,9 @@ $max-width: 960px;
 // Allows the use of rem-calc() or lower-bound() in your settings
 @import "foundation/functions";
 
+// Import colors schema
+@import "colors";
+
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with browser-based text zoom or user-set defaults.
 
@@ -99,39 +102,6 @@ $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 // We use these to define default font weights
 $font-weight-normal: normal;
 $font-weight-bold: bold;
-
-$white       : #FFFFFF;
-$ghost       : #FAFAFA;
-$snow        : #F9F9F9;
-$vapor       : #F6F6F6;
-$white-smoke : #F5F5F5;
-$silver      : #EFEFEF;
-$smoke       : #EEEEEE;
-$gainsboro   : #DDDDDD;
-$iron        : #CCCCCC;
-$base        : #AAAAAA;
-$aluminum    : #999999;
-$jumbo       : #888888;
-$monsoon     : #777777;
-$steel       : #666666;
-$charcoal    : #555555;
-$tuatara     : #444444;
-$oil         : #333333;
-$jet         : #222222;
-$black       : #000000;
-
-// for tables
-$darker-aliceblue: #B4DCFF;
-$aliceblue   : #F0F8FF;
-
-// We use these as default colors throughout
-$primary-color: #2871b4; // #008CBA
-$primary-color-darker: #1a4a75;
-$secondary-color: #e7e7e7;
-$alert-color: #f04124;
-$success-color: #43AC6A;
-$warning-color: #f08a24;
-$info-color: #a0d3e8;
 
 // We use these to control various global styles
 $body-bg: $ghost;

@@ -13,13 +13,6 @@ class Organization < ActiveRecord::Base
   # all_connections = Organization.first.organization_A + Organization.first.organization_B (array od objects)
   #(hack http://stackoverflow.com/questions/2168442/many-to-many-relationship-with-the-same-model-in-rails)
 
-  # OLD table structure
-  # organization_A_connections "names" the OrganizationConnection join table for accessing through the organization_a association
-  ## has_many :organization_A_connections, foreign_key: :organization_b_id, class_name: "OrganizationConnection"
-  # source: :organization_a matches with the belong_to :organization_a identification in the OrganizationConnection model
-  ## has_many :organizations_A, through: :organization_A_connections, source: :organization_a
-
-
   # The edges has a source (organization_a .id) and target (organization_b .id)
 
   # 1) call method .organizations_A
@@ -40,6 +33,17 @@ class Organization < ActiveRecord::Base
 
   # Pagination -> number of records per page
   paginates_per 50
+
+  # Basic search in Name e Short Name
+  def self.search(search, sort_col, sort_dir)
+    if search
+      self.where('organization_name LIKE ? OR organization_short_name LIKE ?', "%#{search}%", "%#{search}%").order("#{sort_col} #{sort_dir}")
+    else
+      self.all.order("#{sort_col} #{sort_dir}")
+    end
+  end
+
+
 
   # Methond to create a graph for Sigma.js
   def self.create_graph()
@@ -121,6 +125,9 @@ class Organization < ActiveRecord::Base
 
     return graph
   end
+
+
+
 
 
 end

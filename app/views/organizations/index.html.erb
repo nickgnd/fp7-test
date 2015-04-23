@@ -6,26 +6,44 @@
   <h2>Organizations</h2>
 
   <br>
+  <form>
+  <div class="row">
+    <div class="large-8 columns">
+      <div class="row collapse">
+      <%= form_tag organizations_path, :method => 'get' do %>
+        <div class="small-10 columns">
+            <%= text_field_tag :search, params[:search] %>
+        </div>
+        <div class="small-2 columns">
+            <%= submit_tag "Search", :name => nil, class: 'button postfix' %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+  </form>
 
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Short name</th>
-        <th>Url</th>
-        <th>Country</th>
-        <th>N° Prog.</th>
-        <th>N° Proj.</th>
-      </tr>
-    <thead>
-    <tbody id="organizations">
-      <%= render partial: "organizations_table" %>
-    </tbody>
-  <!-- ... -->
-  </table>
+  <div class="row">
+    <table id="organizations">
+      <thead>
+        <tr>
+          <th><%= sortable "id", @model,  @default_sort, params[:search] %></th>
+          <th><%= sortable "organization_name", @model,  @default_sort, params[:search], "Name" %></th>
+          <th><%= sortable "organization_short_name", @model,  @default_sort, params[:search], "Short name" %></th>
+          <th><%= sortable "organization_url", @model,  @default_sort, params[:search], "Url" %></th>
+          <th><%= sortable "country", @model,  @default_sort, params[:search], "Country" %></th>
+          <th><%= sortable "num_programmes", @model,  @default_sort, params[:search], "N° Prog." %></th>
+          <th><%= sortable "num_projects", @model,  @default_sort, params[:search], "N° Proj." %></th>
+        </tr>
+      </thead>
+      <tbody id="organizations_table">
+        <%= render partial: "organizations_table" %>
+      </tbody>
+    <!-- ... -->
+    </table>
 
-  <%= paginate @organizations, remote: true %>
+    <%= paginate @organizations, remote: true %>
+  </div>
 
   <br>
 
