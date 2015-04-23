@@ -1,6 +1,11 @@
 class ProjectsController < ApplicationController
+  helper_method :sort_column, :sort_direction
+
   def index
-    @projects = Project.limit(10).page(params[:page])
+    @model = "project" # Set model
+    @default_sort = "reference" # Set default sort
+    @projects = Project.order_by(sort_column(@model, @default_sort), sort_direction)
+    @projects = @projects.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,4 +24,18 @@ class ProjectsController < ApplicationController
       end
     end
   end
+
+
+  private
+
+  def sort_column(model, default_sort)
+    if model == "project"
+      Project.column_names.include?(params[:sort]) ? params[:sort] : default_sort
+    end
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
+  end
+
 end

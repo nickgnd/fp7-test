@@ -7,30 +7,32 @@
 
   <br>
 
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Reference</th>
-        <th>Prog. PGA</th>
-        <th>Start</th>
-        <th>End</th>
-        <th>Coor. country</th>
-        <th>Total cost</th>
-        <th>N° countries</th>
-        <th>N° participants</th>
-      </tr>
-    <thead>
-    <tbody id="projects">
-      <%= render partial: "project" %>
-    </tbody>
-  <!-- ... -->
-  </table>
+  <div class="row">
+    <table id="projects">
+      <thead>
+        <tr>
+          <th><%= sortable "reference", @model, @default_sort, nil, "Reference" %></th>
+          <th><%= sortable "programme_pga", @model, @default_sort, nil, "Prog. PGA" %></th>
+          <th><%= sortable "start_date", @model, @default_sort, nil, "Start" %></th>
+          <th><%= sortable "end_date", @model, @default_sort, nil, "End" %></th>
+          <th><%= sortable "coordinator_country", @model, @default_sort, nil, "Coor. country" %></th>
+          <th><%= sortable "total_cost", @model, @default_sort, nil, "Total cost" %></th>
+          <th><%= sortable "num_countries", @model, @default_sort, nil, "N° countries" %></th>
+          <th><%= sortable "num_participants", @model, @default_sort, nil, "N° participants" %></th>
+        </tr>
+      </thead>
+      <tbody id="projects_table">
+        <%= render partial: "projects_table" %>
+      </tbody>
+    <!-- ... -->
+    </table>
 
   <%= paginate @projects, remote: true %>
+  </div>
 
   <br>
 
 
   </div>
 </div>
+

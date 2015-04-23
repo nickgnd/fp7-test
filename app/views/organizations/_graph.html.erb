@@ -1,7 +1,25 @@
-<blockquote>
-<div>Double-click on a node to retrieve its neighbors</div>
-<div>Right-click on a node to retrieve more information about it</div>
-</blockquote>
+<div class="row">
+  <div class="large-5 large-push-6 large-offset-1 columns">
+    <div class="panel callout radius">
+      <h5>Stats</h5>
+      <div><%= @num_nodes %> nodes</div>
+      <div><%= @num_edges %> edges</div>
+      <ul>
+        <small><li><%= @num_main_edges %> main edges</li></small>
+        <small><li><%= (@num_edges - @num_main_edges) %> secondary edges</li></small>
+      </ul>
+    </div>
+
+  </div>
+  <div class="large-6 large-pull-6 columns">
+    <br/>
+    <blockquote>
+      <h5 class="subheader"><em>Tips</em></h5>
+      <div>Left-click on a node to retrieve its neighbors</div>
+      <div>Right-click on a node to retrieve more information about it</div>
+    </blockquote>
+  </div>
+</div>
 
 <div id="graph-container"></div>
 

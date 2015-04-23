@@ -1,2 +1,2 @@
-$('#projects').html('<%= escape_javascript render('project')%>');
+$('#projects_table').html('<%= escape_javascript render('projects_table')%>');
 $('.pagination').html('<%= escape_javascript(paginate(@projects, :remote => true).to_s) %>');

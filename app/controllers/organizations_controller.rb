@@ -23,16 +23,19 @@ class OrganizationsController < ApplicationController
         @organization_extra = Organization.find(params[:organization_extra_id])
       else
         @graph = Organization.create_graph_of_single_node(@organization.id)
+        @num_nodes = @graph["nodes"].size
+        @num_edges = @graph["edges"].size
+        @num_main_edges = OrganizationConnection.get_all_organization_connections_from_organization_id(@organization.id).size
       end
 
     end
 
     respond_to do |format|
-      format.html
       if params[:organization_extra_id]
         format.js
         format.json {render json: @organization_extra }
       else
+        format.html
         format.json { render json: @graph }     # Graph of the single node (include edges between nodes linked at original node)
       end
       end
