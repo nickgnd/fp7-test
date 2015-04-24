@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407094858) do
+ActiveRecord::Schema.define(version: 20150424143302) do
 
   create_table "organization_connections", force: :cascade do |t|
     t.integer  "source",       limit: 4, null: false
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20150407094858) do
   add_index "organization_connections", ["target"], name: "index_organization_connections_on_target", using: :btree
 
   create_table "organizations", force: :cascade do |t|
+    t.integer  "partner_id",              limit: 4
     t.string   "organization_name",       limit: 255
     t.string   "organization_short_name", limit: 255
     t.string   "organization_url",        limit: 255
@@ -62,7 +63,7 @@ ActiveRecord::Schema.define(version: 20150407094858) do
     t.integer  "ec_max_contribution",   limit: 4
     t.string   "call",                  limit: 255
     t.string   "funding_scheme",        limit: 255
-    t.integer  "organisation_id",       limit: 4
+    t.integer  "organization_id",       limit: 4
     t.string   "coordinator_country",   limit: 255
     t.string   "participant_countries", limit: 255
     t.string   "countries",             limit: 255

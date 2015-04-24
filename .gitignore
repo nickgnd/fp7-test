@@ -25,4 +25,5 @@
 
 # Ignore project status
 project_status.txt
+/_data/_old/*
 
