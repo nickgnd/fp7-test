@@ -17,6 +17,12 @@ class ProjectsController < ApplicationController
     if params[:id]
       @project = Project.find(params[:id])
 
+      if (@project.organization_id == 0 or @project.organization_id.to_s.empty?)
+        @coordinator = "-"
+      else
+        @coordinator = Organization.find(@project.organization_id)
+      end
+
 
       respond_to do |format|
         format.html

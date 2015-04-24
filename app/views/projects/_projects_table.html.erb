@@ -1,7 +1,8 @@
 <% @projects.each do |proj| %>
 
     <tr>
-        <td><%= link_to proj.reference,  project_show_path(proj) %></td>
+        <td><%= link_to proj.id,  project_show_path(proj) %></td>
+        <td><%= proj.acronym %></td>
         <td><%= proj.programme_pga %></td>
         <td><%= proj.start_date %></td>
         <td><%= proj.end_date %></td>

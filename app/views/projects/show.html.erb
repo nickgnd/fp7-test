@@ -1,2 +1,70 @@
-<h1>Projects#show</h1>
-<p>Find me in app/views/projects/show.html.erb</p>
+<!-- Project#show -->
+
+<div class="row">
+  <div class="small-11 small-centered columns">
+  <br>
+  <div class="row">
+    <div class="large-3 columns">
+      <table>
+        <tr>
+          <th>ID</th>
+          <td class="id-value" > <%= @project.id %></td>
+        </tr>
+        <tr>
+          <th>PGA</th>
+          <td><%= @project.programme_pga %></td>
+        </tr>
+        <tr>
+          <th>Prog. code</th>
+          <td><%= @project.programme_code %></td>
+        </tr>
+        <tr>
+          <th>Subprogramme</th>
+          <td><%= @project.subprogramme %></td>
+        </tr>
+        <tr>
+          <th>Call</th>
+          <td><%= @project.call %></td>
+        </tr>
+        <tr>
+          <th>Funding schema</th>
+          <td><%= @project.funding_scheme %></td>
+        </tr>
+        <tr>
+          <th>N° partecipants</th>
+          <td><%= @project.num_participants %></td>
+        </tr>
+        <tr>
+          <th>N° countries</th>
+          <td><%= @project.num_countries %></td>
+        </tr>
+      <!-- ... -->
+      </table>
+    </div>
+    <div class="large-9 columns">
+        <h4><%= @project.acronym %></h4>
+        <h5 class="subheader">Coordinator: <%= link_to @coordinator.organization_name, organization_show_path(@coordinator) %>
+        <h5 class="subheader">Subjects: <%= (@project.subjects.to_s.empty?)? "-" : @project.subjects %></h5>
+        <h5 class="subheader">Period: <%= (@project.start_date.to_s == "0000-00-00")? "-" : @project.start_date %> - <%= (@project.end_date.to_s == "0000-00-00")? "-" : @project.end_date %></h5>
+        <h5 class="subheader">Url: <%= (@project.project_url.to_s.empty?)? "-" : link_to(@project.project_url, @project.project_url) %></h5>
+    </div>
+  </div>
+
+  <br>
+
+
+  </div>
+</div>
+
+
+
+<!--       t.integer :total_cost
+      t.integer :ec_max_contribution
+      t.integer :organization_id
+      t.string :coordinator_country
+      t.string :participant_countries
+      t.string :countries
+      t.integer :num_countries
+      t.integer :num_participants
+      t.integer :num_uniquepart
+      t.integer :share -->

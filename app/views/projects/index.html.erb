@@ -11,7 +11,8 @@
     <table id="projects">
       <thead>
         <tr>
-          <th><%= sortable "reference", @model, @default_sort, nil, "Reference" %></th>
+          <th><%= sortable "id", @model, @default_sort, nil, "Id" %></th>
+          <th><%= sortable "acronym", @model, @default_sort, nil, "Acronym" %></th>
           <th><%= sortable "programme_pga", @model, @default_sort, nil, "Prog. PGA" %></th>
           <th><%= sortable "start_date", @model, @default_sort, nil, "Start" %></th>
           <th><%= sortable "end_date", @model, @default_sort, nil, "End" %></th>
